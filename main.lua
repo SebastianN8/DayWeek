@@ -29,31 +29,25 @@ local myResult = display.newText('', display.contentCenterX, 800, native.SystemF
 local function whatDayIs(event)
 	-- Variables
 	local dayOfWeek = myTextField.text
-	--[[
-	I was trying to make an array for the rest of the days of the week in order to check in it for days 
-	other than Saturday or Sunday
-	
 	local dayArray = {'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'}
 
-
-	
 	-- For function
 	local function hasValue(tab, val)
 		for i, value in pairs(tab) do
-			if tab == val then 
-				return true
+			if value == val then 
+				return i
 			end
 		end
 		return false
 	end
-	--]]
 	
-
 	-- If statement 
 	if dayOfWeek == 'Saturday' or dayOfWeek == 'Sunday' then
 		myResult.text = ('It is a day of the weekend!!')
-	else
+	elseif hasValue(dayArray, dayOfWeek) then
 		myResult.text = ('It is not a day of the weekend!!')
+	else 
+		myResult.text('Your input is not a valid day of the week!')
 	end
 end
 
